@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="sdmanshi.cn - Shandong Manshi Flooring Manufacturing Co., Ltd, Professional flooring supplier, Solid Wood Flooring, Laminate Flooring, SPC Flooring, OEM ODM service for global clients: Europe, Middle East, Southeast Asia, Central Asia, Africa, Australia">
+    <meta name="keywords" content="Solid Wood Flooring, Laminate Flooring, SPC Flooring, flooring manufacturer, OEM ODM flooring, China flooring supplier, sdmanshi.cn">
+    <meta property="og:title" content="Shandong Manshi Flooring Manufacturing Co., Ltd | sdmanshi.cn">
+    <meta property="og:description" content="Professional flooring supplier, Solid Wood Flooring, Laminate Flooring, SPC Flooring, OEM ODM service for global clients">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://i.stardots.io/manshiflooring/StarDots-2026100814012120690.jpg">
+    <title>Shandong Manshi Flooring Manufacturing Co., Ltd | sdmanshi.cn</title>
+    <link rel="canonical" href="https://sdmanshi.cn/">
+    <link rel="icon" href="https://i.stardots.io/manshiflooring/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        :root {
+            --color-beige: #f7f2e8;
+            --color-camel: #b89b78;
+            --color-darkcamel: #8c6d4a;
+            --color-text: #333333;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            color: var(--color-text);
+            background-color: #ffffff;
+        }
+        /* Header */
+        .header-top {
+            background-color: var(--color-camel);
+            color:white;
+            padding:8px 0;
+        }
+        .navbar {
+            background-color: var(--color-beige);
+        }
+        .brand-title{
+            font-weight:700;
+            color:var(--color-darkcamel);
+        }
+        /* Carousel */
+        .carousel-item{
+            height:82vh;
+            min-height:420px;
+        }
+        @media (max-width:768px){
+            .carousel-item{
+                height:55vh;
+            }
+        }
+        .carousel-item img{
+            object-fit:cover;
+            width:100%;
+            height:100%;
+        }
+        .carousel-caption{
+            background:rgba(0,0,0,0.45);
+            border-radius:12px;
+            padding:2rem;
+        }
+        /* Section common */
+        .section-padding{
+            padding:70px 0;
+        }
+        .section-title{
+            color:var(--color-darkcamel);
+            font-weight:600;
+            margin-bottom:45px;
+            text-align:center;
+        }
+        /* Product Card */
+        .product-card{
+            border:1px solid #eee;
+            border-radius:10px;
+            overflow:hidden;
+            transition:0.3s;
+            height:100%;
+        }
+        .product-card:hover{
+            box-shadow:0 8px 22px #00000018;
+        }
+        .product-card img{
+            height:260px;
+            width:100%;
+            object-fit:cover;
+        }
+        .product-desc{
+            padding:18px;
+        }
+        /* 产品详情区块 */
+        .product-detail{
+            display:none;
+            padding:70px 0;
+            background:#f9f7f3;
+        }
+        .product-detail.active{
+            display:block;
+        }
+        /* Contact form */
+        .contact-bg{
+            background-color:var(--color-beige);
+        }
+        .btn-camel{
+            background-color:var(--color-camel);
+            color:white;
+        }
+        .btn-camel:hover{
+            background-color:var(--color-darkcamel);
+            color:white;
+        }
+        /* Footer */
+        footer{
+            background-color:#222;
+            color:#ddd;
+            padding:40px 0 20px;
+        }
+        /* 工厂轮播图片高度 */
+        .factory-carousel-item img{
+            height:450px;
+            object-fit:cover;
+            width:100%;
+        }
+        /* ========== 客户案例图片 悬浮放大效果 ========== */
+        .case-img-wrap {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            cursor: pointer;
+        }
+        .case-img-wrap img {
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            width:100%;
+            height:260px;
+            object-fit:cover;
+        }
+        .case-img-wrap:hover img {
+            transform: scale(1.08);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+        /* ========== 案例悬浮遮罩文字 新增 ========== */
+        .case-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .case-img-wrap:hover .case-overlay {
+            opacity: 1;
+        }
+        .case-overlay h5 {
+            margin:0 0 6px;
+            font-size:18px;
+        }
+        .case-overlay p {
+            margin:0;
+            font-size:14px;
+            opacity:0.9;
+        }
+        /* ========== Lightbox 弹窗样式 ========== */
+        .lightbox {
+            position: fixed;
+            top:0;left:0;right:0;bottom:0;
+            background: rgba(0,0,0,0.85);
+            z-index:9999;
+            display:none;
+            align-items:center;
+            justify-content:center;
+            padding:20px;
+        }
+        .lightbox.show{
+            display:flex;
+        }
+        .lightbox img{
+            max-width:90%;
+            max-height:90vh;
+            border-radius:8px;
+        }
+        .lightbox-close{
+            position:absolute;
+            top:20px;
+            right:30px;
+            color:#fff;
+            font-size:2.5rem;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+<!-- Lightbox 图片弹窗 -->
+<div class="lightbox" id="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="" alt="preview">
+</div>
+
+<!-- Top Header Bar -->
+<div class="header-top">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center flex-wrap">
+            <div><i class="bi bi-telephone"></i> <a href="tel:+8618453126963" class="text-white text-decoration-none">+86 18453126963</a> | <i class="bi bi-whatsapp"></i> <a href="https://wa.me/8618453126963" class="text-white text-decoration-none">+86 18453126963</a></div>
+            <div>Global Flooring Supplier | Europe, Middle East, Southeast Asia, Central Asia, Africa, Australia</div>
+        </div>
+    </div>
+</div>
+
+<!-- Navigation Bar 【客户案例菜单】 -->
+<nav class="navbar navbar-expand-lg shadow-sm">
+    <div class="container">
+        <a class="navbar-brand brand-title" href="#home">Shandong Manshi Flooring Manufacturing Co., Ltd</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">Factory Show</a></li>
+                <li class="nav-item"><a class="nav-link" href="#cases">Customer Cases</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact & Inquiry</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ============= HOME PAGE ============= -->
+<div id="home">
+<!-- Main Carousel -->
+<div id="mainCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="3"></button>
+        <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="4"></button>
+    </div>
+    <div class="carousel-inner">
+        <!-- Slide1 Pic1: 温馨始于足下 -->
+        <div class="carousel-item active">
+            <img src="https://i.stardots.io/manshiflooring/StarDots-2026100814012120690.jpg" alt="Modern home flooring">
+            <div class="carousel-caption d-md-block">
+                <h1>Warmth Starts Under Your Feet</h1>
+                <p class="lead">High‑quality flooring for residential & commercial projects worldwide</p>
+            </div>
+        </div>
+        <!-- Slide2 Pic2 OEM ODM -->
+        <div class="carousel-item">
+            <img src="https://i.stardots.io/manshiflooring/StarDots-2026100814012120768.jpg" alt="OEM ODM flooring service">
+            <div class="carousel-caption d-md-block">
+                <h2>OEM & ODM Available</h2>
+                <p>Custom size, color, logo for your brand. Support wholesale bulk orders</p>
+            </div>
+        </div>
+        <!-- Slide3 Pic3 SPC -->
+        <div class="carousel-item">
+            <img src="https://i.stardots.io/manshiflooring/StarDots-2026100814012120841.jpg" alt="SPC Flooring">
+            <div class="carousel-caption d-md-block">
+                <h2>Durable SPC Flooring</h2>
+                <p>100% waterproof, wear‑resistant for hotel, apartment project</p>
+            </div>
+        </div>
+        <!-- Slide4 Pic4 Laminate -->
+        <div class="carousel-item">
+            <img src="https://i.stardots.io/manshiflooring/StarDots-2026100814080475123.jpg" alt="Laminate Flooring">
+            <div class="carousel-caption d-md-block">
+                <h2>Cost‑effective Laminate Flooring</h2>
+                <p>Stable quality, big stock, fast shipment for bulk orders</p>
+            </div>
+        </div>
+        <!-- Slide5 Pic5 Solid wood -->
+        <div class="carousel-item">
+            <img src="https://i.stardots.io/manshiflooring/StarDots-2026100814012120725.jpg" alt="Solid Wood Flooring">
+            <div class="carousel-caption d-md-block">
+                <h2>Premium Solid Wood Flooring</h2>
+                <p>Natural timber for villa and high‑end decoration</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
+
+<!-- Our Flooring Series Section -->
+<section id="products" class="section-padding">
+    <div class="container">
+        <h2 class="section-title">Our Flooring Series</h2>
+        <div class="row g-4">
+            <!-- Row 1 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="product-card">
+                    <img src="https://i.stardots.io/manshiflooring/StarDots-2026100814012120982.jpg" alt="Solid Wood Flooring">
+                    <div class="product-desc">
+                        <h4>Solid Wood Flooring</h4>
+                        <a href="#detail-solid" class="btn btn-camel view-more">View More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="product-card">
+                    <img src="https://i.stardots.io/manshiflooring/StarDots-2026100814244959104.jpg" alt="Laminate Flooring">
+                    <div class="product-desc">
+                        <h4>Laminate Flooring</h4>
+                        <a href="#detail-laminate" class="btn btn-camel view-more">View More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="product-card">
+                    <img src="https://i.stardots.io/manshiflooring/StarDots-2026100814244959288.jpg" alt="SPC Flooring">
+                    <div class="product-desc">
+                        <h4>SPC Flooring</h4>
+                        <a href="#detail-spc" class="btn btn-camel view-more">View More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Row2 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="product-card">
+                    <img src="https://i.stardots.io/manshiflooring/StarDots-2026100814244959263.jpg" alt="Waterproof SPC Flooring">
+                    <div class="product-desc">
+                        <h4>Waterproof SPC Flooring</h4>
+                        <a href="#detail-waterproofspc" class="btn btn-camel view-more">View More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="product-card">
+                    <img src="https://i.stardots.io/manshiflooring/StarDots-2026100814244959226.jpg" alt="Engineered Wood Flooring">
+                    <div class="product-desc">
+                        <h4>Engineered Wood Flooring</h4>
+                        <a href="#detail-engineered" class="btn btn-camel view-more">View More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="product-card">
+                    <img src="https://i.stardots.io/manshiflooring/StarDots-2026100814244959156.jpg" alt="Commercial Laminate Flooring">
+                    <div class="product-desc">
+                        <h4>Commercial Laminate Flooring</h4>
+                        <a href="#detail-commerciallaminate" class="btn btn-camel view-more">View More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Row3 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="product-card">
+                    <img src="https://i.stardots.io/manshiflooring/StarDots-2026100814244959239.jpg" alt="Vinyl Click Flooring">
+                    <div class="product-desc">
+                        <h4>Vinyl Click Flooring</h4>
+                        <a href="#detail-vinylclick" class="btn btn-camel view-more">View More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="product-card">
+                    <img src="https://i.stardots.io/manshiflooring/StarDots-2026100814244959262.jpg" alt="Oak Solid Wood Flooring">
+                    <div class="product-desc">
+                        <h4>Oak Solid Wood Flooring</h4>
+                        <a href="#detail-oaksolid" class="btn btn-camel view-more">View More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="product-card">
+                    <img src="https://i.stardots.io/manshiflooring/StarDots-2026100814244959199.jpg" alt="Anti‑static Flooring">
+                    <div class="product-desc">
+                        <h4>Anti‑static Flooring</h4>
+                        <a href="#detail-antistatic" class="btn btn-camel view-more">View More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 产品详情区块 开始 -->
+<section class="product-detail" id="detail-solid">
+    <div class="container">
+        <a href="#products" class="btn btn-outline-dark mb-4">← Back To Products List</a>
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <img src="https://i.stardots.io/manshiflooring/StarDots-2026100814012120982.jpg" class="img-fluid rounded shadow w-100" alt="Solid Wood Flooring">
+            </div>
+            <div class="col-lg-6">
+                <h2>Solid Wood Flooring</h2>
+                <ul>
+                    <li>Material: 100% natural solid hardwood, oak, teak, walnut etc.</li>
+                    <li>Size: customizable thickness & width</li>
+                    <li>Surface: matte / semi‑gloss / hand‑scraped</li>
+                    <li>Application: villa, high‑end residential project</li>
+                </ul>
+                <a href="#contact" class="btn btn-camel mt-3">Send Inquiry</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="product-detail" id="detail-laminate">
+    <div class="container">
+        <a href="#products" class="btn btn-outline-dark mb-4">← Back To Products List</a>
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <img src="https://i.stardots.io/manshiflooring/StarDots-2026100814244959104.jpg" class="img-fluid rounded shadow w-100" alt="Laminate Flooring">
+            </div>
+            <div class="col-lg-6">
+                <h2>Laminate Flooring</h2>
+                <ul>
+                    <li>AC3‑AC5 wear resistant grade</li>
+                    <li>Rich wood grain designs, large stock</li>
+                    <li>Easy click installation, competitive price</li>
+                    <li>Application: home, office, commercial space</li>
+                </ul>
+                <a href="#contact" class="btn btn-camel mt-3">Send Inquiry</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="product-detail" id="detail-spc">
+    <div class="container">
+        <a href="#products" class="btn btn-outline-dark mb-4">← Back To Products List</a>
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <img src="https://i.stardots.io/manshiflooring/StarDots-2026100814244959288.jpg" class="img-fluid rounded shadow w-100" alt="SPC Flooring">
+            </div>
+            <div class="col-lg-6">
+                <h2>SPC Flooring</h2>
+                <ul>
+                    <li>100% waterproof, fire retardant</li>
+                    <li>Thickness:3.5‑8mm with IXPE pad optional</li>
+                    <li>Anti‑scratch, stable dimension</li>
+                    <li>Application: hotel, apartment, shopping mall</li>
+                </ul>
+                <a href="#contact" class="btn btn-camel mt-3">Send Inquiry</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="product-detail" id="detail-waterproofspc">
+    <div class="container">
+        <a href="#products" class="btn btn-outline-dark mb-4">← Back To Products List</a>
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <img src="https://i.stardots.io/manshiflooring/StarDots-2026100814244959263.jpg" class="img-fluid rounded shadow w-100" alt="Waterproof SPC Flooring">
+            </div>
+            <div class="col-lg-6">
+                <h2>Waterproof SPC Flooring</h2>
+                <ul>
+                    <li>Complete waterproof performance for wet area</li>
+                    <li>High density PVC material</li>
+                    <li>Various colors, easy maintenance</li>
+                    <li>Application: bathroom, kitchen, basement</li>
+                </ul>
+                <a href="#contact" class="btn btn-camel mt-3">Send Inquiry</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="product-detail" id="detail-engineered">
+    <div class="container">
+        <a href="#products" class="btn btn-outline-dark mb-4">← Back To Products List</a>
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <img src="https://i.stardots.io/manshiflooring/StarDots-2026100814244959226.jpg" class="img-fluid rounded shadow w-100" alt="Engineered Wood Flooring">
+            </div>
+            <div class="col-lg-6">
+                <h2>Engineered Wood Flooring</h2>
+                <ul>
+                    <li>Real wood veneer top layer</li>
+                    <li>Good stability for underfloor heating</li>
+                    <li>Multiple wood species available</li>
+                    <li>Application: villa, high‑end apartment</li>
+                </ul>
+                <a href="#contact" class="btn btn-camel mt-3">Send Inquiry</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="product-detail" id="detail-commerciallaminate">
+    <div class="container">
+        <a href="#products" class="btn btn-outline-dark mb-4">← Back To Products List</a>
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <img src="https://i.stardots.io/manshiflooring/StarDots-2026100814244959156.jpg" class="img-fluid rounded shadow w-100" alt="Commercial Laminate Flooring">
+            </div>
+            <div class="col-lg-6">
+                <h2>Commercial Laminate Flooring</h2>
+                <ul>
+                    <li>High AC4‑AC5 heavy wear resistance</li>
+                    <li>Anti‑scratch, high traffic usage</li>
+                    <li>Bulk stock for large project order</li>
+                    <li>Application: office, school, supermarket</li>
+                </ul>
+                <a href="#contact" class="btn btn-camel mt-3">Send Inquiry</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="product-detail" id="detail-vinylclick">
+    <div class="container">
+        <a href="#products" class="btn btn-outline-dark mb-4">← Back To Products List</a>
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <img src="https://i.stardots.io/manshiflooring/StarDots-2026100814244959239.jpg" class="img-fluid rounded shadow w-100" alt="Vinyl Click Flooring">
+            </div>
+            <div class="col-lg-6">
+                <h2>Vinyl Click Flooring</h2>
+                <ul>
+                    <li>Click lock installation without glue</li>
+                    <li>Soft foot feeling, anti‑slip</li>
+                    <li>Waterproof, easy clean</li>
+                    <li>Application: home, hospital, retail store</li>
+                </ul>
+                <a href="#contact" class="btn btn-camel mt-3">Send Inquiry</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="product-detail" id="detail-oaksolid">
+    <div class="container">
+        <a href="#products" class="btn btn-outline-dark mb-4">← Back To Products List</a>
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <img src="https://i.stardots.io/manshiflooring/StarDots-2026100814244959262.jpg" class="img-fluid rounded shadow w-100" alt="Oak Solid Wood Flooring">
+            </div>
+            <div class="col-lg-6">
+                <h2>Oak Solid Wood Flooring</h2>
+                <ul>
+                    <li>Natural oak solid timber</li>
+                    <li>Rich texture, durable hardness</li>
+                    <li>Multi‑surface treatment available</li>
+                    <li>Application: villa & high‑end residence</li>
+                </ul>
+                <a href="#contact" class="btn btn-camel mt-3">Send Inquiry</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="product-detail" id="detail-antistatic">
+    <div class="container">
+        <a href="#products" class="btn btn-outline-dark mb-4">← Back To Products List</a>
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <img src="https://i.stardots.io/manshiflooring/StarDots-2026100814244959199.jpg" class="img-fluid rounded shadow w-100" alt="Anti‑static Flooring">
+            </div>
+            <div class="col-lg-6">
+                <h2>Anti‑static Flooring</h2>
+                <ul>
+                    <li>ESD anti‑static performance</li>
+                    <li>Dust‑proof, wear‑resistant</li>
+                    <li>Specialized for electronic environment</li>
+                    <li>Application: computer room, lab, workshop</li>
+                </ul>
+                <a href="#contact" class="btn btn-camel mt-3">Send Inquiry</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- 产品详情区块 结束 -->
+
+<!-- 工厂展示 -->
+<section id="about" class="section-padding" style="background:#f9f7f3;">
+    <div class="container">
+        <h2 class="section-title">Factory Show</h2>
+        <p class="fs-5 mb-5">For the past 12 years, Shandong Manshi Flooring Manufacturing Co., Ltd has been dedicated to the production and manufacturing of flooring. We have a spacious production base and advanced production lines to ensure the high quality of SPC, laminate flooring and solid wood flooring. We combine innovative engineering with aesthetic design to provide environmentally friendly, durable and customizable flooring solutions to 60+ countries around the world. We focus on mid‑to‑high‑end customers and offer OEM and ODM services to our clients. We welcome all customers to visit our factory. We look forward to having face‑to‑face communication with our customers. If you have any questions about flooring, please feel free to contact us.</p>
+        <div id="factoryCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#factoryCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#factoryCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#factoryCarousel" data-bs-slide-to="2"></button>
+                <button type="button" data-bs-target="#factoryCarousel" data-bs-slide-to="3"></button>
+                <button type="button" data-bs-target="#factoryCarousel" data-bs-slide-to="4"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active factory-carousel-item">
+                    <img src="https://i.stardots.io/manshiflooring/StarDots-2026100814402777563.jpg" alt="factory workshop">
+                </div>
+                <div class="carousel-item factory-carousel-item">
+                    <img src="https://i.stardots.io/manshiflooring/StarDots-2026100814402777646.jpg" alt="production line">
+                </div>
+                <div class="carousel-item factory-carousel-item">
+                    <img src="https://i.stardots.io/manshiflooring/StarDots-2026100817505065078.jpg" alt="warehouse stock">
+                </div>
+                <div class="carousel-item factory-carousel-item">
+                    <img src="https://i.stardots.io/manshiflooring/StarDots-2026100817432764751.jpg" alt="QC inspection">
+                </div>
+                <div class="carousel-item factory-carousel-item">
+                    <img src="https://i.stardots.io/manshiflooring/StarDots-2026100817432764730.jpg" alt="loading container">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#factoryCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#factoryCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- 客户案例板块 -->
+<section id="cases" class="section-padding">
+    <div class="container">
+        <h2 class="section-title">Customer Project Cases</h2>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="case-img-wrap">
+                    <img src="https://i.stardots.io/manshiflooring/StarDots-2026100817233791799.jpg" alt="Manshi flooring residential project case">
+                    <div class="case-overlay">
+                        <h5>Residential Project</h5>
+                        <p>Oak Solid Wood Flooring | 800㎡ Home Renovation</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="case-img-wrap">
+                    <img src="https://i.stardots.io/manshiflooring/StarDots-2026100817233791661.jpg" alt="SPC flooring commercial installation project">
+                    <div class="case-overlay">
+                        <h5>Commercial Project</h5>
+                        <p>SPC Flooring | Office & Shopping Mall</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="case-img-wrap">
+                    <img src="https://i.stardots.io/manshiflooring/StarDots-2026100817233791698.jpg" alt="Solid wood flooring hotel project">
+                    <div class="case-overlay">
+                        <h5>Hotel Project</h5>
+                        <p>Solid Wood Flooring | 120 Rooms Hotel</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="case-img-wrap">
+                    <img src="https://i.stardots.io/manshiflooring/StarDots-2026100817233791609.jpg" alt="Laminate flooring apartment project">
+                    <div class="case-overlay">
+                        <h5>Apartment Project</h5>
+                        <p>Laminate Flooring | Bulk Apartment Complex</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="case-img-wrap">
+                    <img src="https://i.stardots.io/manshiflooring/StarDots-2026100817233791746.jpg" alt="Waterproof SPC flooring retail store project">
+                    <div class="case-overlay">
+                        <h5>Retail Store Project</h5>
+                        <p>Waterproof SPC Flooring | Wet Area Available</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="case-img-wrap">
+                    <img src="https://i.stardots.io/manshiflooring/StarDots-2026100817233791791.jpg" alt="Engineered wood flooring villa project">
+                    <div class="case-overlay">
+                        <h5>Villa Project</h5>
+                        <p>Engineered Wood Flooring | Underfloor Heating</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Us & Send Inquiry 板块【这里增加工厂地址】 -->
+<section id="contact" class="section-padding contact-bg">
+    <div class="container">
+        <h2 class="section-title">Contact Us & Send Inquiry</h2>
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <h4>Contact Person: Lindy</h4>
+                <p><i class="bi bi-telephone"></i> Tel: <a href="tel:+8618453126963" class="text-dark text-decoration-none">+86 18453126963</a></p>
+                <p><i class="bi bi-whatsapp"></i> WhatsApp: <a href="https://wa.me/8618453126963" class="text-dark text-decoration-none">+86 18453126963</a></p>
+                <p><i class="bi bi-envelope"></i> Email: manshilindy@163.com</p>
+                <p><i class="bi bi-geo-alt"></i> Factory Address: Room 215, Chuangye Building, Dongcheng Street, Liaocheng City, Shandong Province</p>
+                <a target="_blank" href="https://wa.me/8618453126963" class="btn btn-success mt-3">
+                    <i class="bi bi-whatsapp"></i> Chat on WhatsApp
+                </a>
+            </div>
+            <div class="col-lg-6">
+                <form id="inquiryForm">
+                    <div class="mb-3">
+                        <label>Your Name *</label>
+                        <input type="text" class="form-control" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Email / WhatsApp *</label>
+                        <input type="text" class="form-control" name="contact" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Interested Product</label>
+                        <select class="form-select" name="product">
+                            <option>Solid Wood Flooring</option>
+                            <option>Laminate Flooring</option>
+                            <option>SPC Flooring</option>
+                            <option>Waterproof SPC Flooring</option>
+                            <option>Engineered Wood Flooring</option>
+                            <option>Commercial Laminate Flooring</option>
+                            <option>Vinyl Click Flooring</option>
+                            <option>Oak Solid Wood Flooring</option>
+                            <option>Anti‑static Flooring</option>
+                            <option>Other / Custom Requirement</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label>Message / Requirement *</label>
+                        <textarea rows="4" class="form-control" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-camel w-100">Submit Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Shandong Manshi Flooring Manufacturing Co., Ltd</h5>
+                <p>Professional flooring manufacturer, export worldwide. Website: sdmanshi.cn</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Products</h5>
+                <ul class="list-unstyled">
+                    <li>Solid Wood Flooring</li>
+                    <li>Laminate Flooring</li>
+                    <li>SPC Flooring</li>
+                    <li>Waterproof SPC Flooring</li>
+                    <li>Engineered Wood Flooring</li>
+                    <li>Commercial Laminate Flooring</li>
+                    <li>Vinyl Click Flooring</li>
+                    <li>Oak Solid Wood Flooring</li>
+                    <li>Anti‑static Flooring</li>
+                    <li>OEM & ODM Service</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Contact</h5>
+                <p>Contact Person: Lindy</p>
+                <p>Tel: +86 18453126963</p>
+                <p>WhatsApp: +86 18453126963</p>
+                <p>Email: manshilindy@163.com</p>
+            </div>
+        </div>
+        <div class="mt-4 pt-3 border-top border-secondary text-center">
+            <p>© 2026 Shandong Manshi Flooring Manufacturing Co., Ltd. All Rights Reserved. Website: sdmanshi.cn</p>
+        </div>
+    </div>
+</footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// View‑More 产品详情切换
+const viewMoreBtns = document.querySelectorAll('.view-more');
+const allDetails = document.querySelectorAll('.product-detail');
+
+viewMoreBtns.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        allDetails.forEach(item => item.classList.remove('active'));
+        document.querySelector(targetId).classList.add('active');
+        window.scrollTo(0,0);
+    })
+})
+
+// 返回产品列表按钮
+document.querySelectorAll('.product-detail a[href="#products"]').forEach(backBtn=>{
+    backBtn.addEventListener('click',function(e){
+        e.preventDefault();
+        allDetails.forEach(item => item.classList.remove('active'));
+    })
+})
+
+// Lightbox 图片预览
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const caseImages = document.querySelectorAll('.case-img-wrap img');
+const closeLightbox = document.querySelector('.lightbox-close');
+
+caseImages.forEach(img=>{
+    img.addEventListener('click',()=>{
+        lightboxImg.src = img.src;
+        lightbox.classList.add('show');
+    })
+})
+closeLightbox.addEventListener('click',()=>{
+    lightbox.classList.remove('show');
+})
+lightbox.addEventListener('click',(e)=>{
+    if(e.target === lightbox){
+        lightbox.classList.remove('show');
+    }
+})
+
+// 表单提交简单示例（你后续可以对接后端）
+const inquiryForm = document.getElementById('inquiryForm');
+inquiryForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    alert("Your inquiry submitted successfully! We will contact you soon.");
+    this.reset();
+})
+</script>
+</body>
+</html>
